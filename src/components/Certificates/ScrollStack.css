@@ -1,0 +1,84 @@
+/* ScrollStack CSS from React Bits with theme-harmonized styles */
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+  overscroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: scroll-position;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 90, 58, 0.35) transparent;
+}
+
+.scroll-stack-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-stack-scroller::-webkit-scrollbar-thumb {
+  background: rgba(184, 90, 58, 0.35);
+  border-radius: 999px;
+}
+
+.scroll-stack-inner {
+  padding: 24px 20px 1100px;
+  min-height: 100%;
+}
+
+.scroll-stack-card-wrapper {
+  position: relative;
+}
+
+.scroll-stack-card {
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  background: #FAF7EE;
+  box-shadow: 0 12px 32px -8px rgba(42, 39, 30, 0.14), 0 2px 6px rgba(42, 39, 30, 0.05);
+  min-height: auto;
+  width: 100%;
+  margin: 12px 0;
+  padding: 22px 28px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.scroll-stack-card:hover {
+  box-shadow: 0 16px 40px -8px rgba(42, 39, 30, 0.16), 0 3px 10px rgba(42, 39, 30, 0.06);
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
+}
+
+@media (max-width: 860px) {
+  .scroll-stack-inner {
+    padding: 18px 12px 300px;
+  }
+  .scroll-stack-card {
+    padding: 18px 20px;
+    min-height: auto;
+    border-radius: 16px;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .scroll-stack-inner {
+    padding: 14px 8px 240px;
+  }
+  .scroll-stack-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+}

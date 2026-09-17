@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #E3DCC8;
+  --bg-deep: rgba(214, 205, 178, 0.42);
+  --paper: #F4EFE1;
+  --ink: #2A271E;
+  --ink-soft: #5B5643;
+  --ink-faint: #8A8467;
+  --moss: #566047;
+  --moss-deep: #3C4432;
+  --clay: #A4592F;
+  --gold: #A98436;
+  --line: rgba(42, 39, 30, 0.16);
+  --line-strong: rgba(42, 39, 30, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: var(--moss);
+  color: var(--paper);
+}
+
+/* Typography Utility Classes */
+.font-serif-editorial {
+  font-family: 'Newsreader', serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-sans-ui {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-heading-display {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--moss);
+}
+
+/* Lenis Smooth Scroll Recommended Overrides */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
