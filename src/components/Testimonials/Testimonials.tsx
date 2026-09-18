@@ -61,9 +61,9 @@ export const Testimonials: React.FC = () => {
           className="mx-auto max-w-sm px-4 py-8 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12 select-none"
         >
           <div className="relative grid grid-cols-1 gap-12 md:gap-20 md:grid-cols-2">
-            {/* 3D Stacked Image Column */}
-            <div>
-              <div className="relative h-80 w-full" style={{ minHeight: "320px" }}>
+            {/* 3D Stacked Avatar Column */}
+            <div className="flex flex-col">
+              <div className="relative h-84 w-full" style={{ minHeight: "340px" }}>
                 <AnimatePresence>
                   {testimonials.map((testimonial, index) => {
                     const rot = randomRotateY(index);
@@ -73,51 +73,100 @@ export const Testimonials: React.FC = () => {
                         key={testimonial.src}
                         initial={{ opacity: 0, scale: 0.9, z: -100, rotate: rot }}
                         animate={{
-                          opacity: isActive ? 1 : 0.7,
-                          scale: isActive ? 1 : 0.95,
+                          opacity: isActive ? 1 : 0.65,
+                          scale: isActive ? 1 : 0.94,
                           z: isActive ? 0 : -100,
                           rotate: isActive ? 0 : rot,
                           zIndex: isActive ? 40 : testimonials.length + 2 - index,
-                          y: isActive ? [0, -80, 0] : 0,
+                          y: isActive ? [0, -60, 0] : 0,
                         }}
                         exit={{ opacity: 0, scale: 0.9, z: 100, rotate: rot }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
                         className="absolute inset-0 origin-bottom"
                       >
-                        <img
-                          src={testimonial.src}
-                          alt={testimonial.name}
-                          width={500}
-                          height={500}
-                          draggable={false}
-                          className="h-full w-full rounded-3xl object-cover object-center shadow-lg border border-[rgba(42,39,30,0.1)]"
-                        />
+                        <div className="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl shadow-[#2A271E]/15 border-2 border-[rgba(42,39,30,0.12)] bg-[#F4EFE1]">
+                          <img
+                            src={testimonial.src}
+                            alt={testimonial.name}
+                            width={500}
+                            height={500}
+                            draggable={false}
+                            className="h-full w-full object-cover object-center"
+                          />
+                          {/* Floating Pinterest-style frosted badge */}
+                          <div className="absolute bottom-3 left-3 right-3 p-3 rounded-2xl bg-[rgba(244,239,225,0.92)] backdrop-blur-md border border-[rgba(42,39,30,0.12)] flex items-center justify-between shadow-md">
+                            <div className="pr-2 truncate">
+                              <p style={{ ...serif, color: c.ink }} className="text-sm font-bold truncate">
+                                {testimonial.name}
+                              </p>
+                              <p style={{ ...mono, color: c.inkSoft }} className="text-[10px] uppercase tracking-wider truncate">
+                                {testimonial.designation}
+                              </p>
+                            </div>
+                            <span 
+                              style={{ ...mono, background: "rgba(86,96,71,0.15)", color: c.moss }} 
+                              className="text-[10px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap"
+                            >
+                              3D Avatar
+                            </span>
+                          </div>
+                        </div>
                       </motion.div>
                     );
                   })}
                 </AnimatePresence>
               </div>
+
+              {/* Avatar Selector Strip */}
+              <div className="flex items-center justify-center md:justify-start gap-2.5 mt-6 pt-2">
+                {testimonials.map((item, idx) => {
+                  const isSelected = idx === active;
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => setActive(idx)}
+                      className={`relative rounded-full transition-all duration-300 cursor-pointer p-0.5 ${
+                        isSelected 
+                          ? "ring-2 ring-[#566047] scale-110 shadow-md" 
+                          : "opacity-60 hover:opacity-100 hover:scale-105"
+                      }`}
+                      aria-label={`View testimonial from ${item.name}`}
+                      title={item.name}
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.name}
+                        className="w-10 h-10 rounded-full object-cover border border-[rgba(42,39,30,0.15)]"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Testimonial Quote and Designation */}
-            <div className="flex flex-col justify-between py-4">
+            <div className="flex flex-col justify-between py-2">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
-                  <h3 style={{ ...serif, color: c.ink }} className="text-2xl font-bold">
+                  <div className="inline-block px-3 py-1 rounded-full text-xs font-mono uppercase tracking-widest mb-4" style={{ background: "rgba(164,89,47,0.12)", color: c.clay, ...mono }}>
+                    Endorsement {active + 1} of {testimonials.length}
+                  </div>
+
+                  <h3 style={{ ...serif, color: c.ink }} className="text-2xl md:text-3xl font-bold">
                     {testimonials[active].name}
                   </h3>
-                  <p style={{ ...mono, color: c.inkSoft }} className="text-xs uppercase tracking-wider mt-1">
+                  <p style={{ ...mono, color: c.inkSoft }} className="text-xs uppercase tracking-wider mt-1.5">
                     {testimonials[active].designation}
                   </p>
                   <p
-                    style={{ ...serif, color: c.inkSoft, fontStyle: "italic", lineHeight: 1.6 }}
-                    className="mt-8 text-lg md:text-xl"
+                    style={{ ...serif, color: c.inkSoft, fontStyle: "italic", lineHeight: 1.65 }}
+                    className="mt-6 text-lg md:text-xl"
                   >
                     "{testimonials[active].quote}"
                   </p>
@@ -125,11 +174,11 @@ export const Testimonials: React.FC = () => {
               </AnimatePresence>
 
               {/* Navigation Controls */}
-              <div className="flex gap-4 pt-12 md:pt-0">
+              <div className="flex items-center gap-4 pt-10 md:pt-4">
                 <button
                   onClick={handlePrev}
                   style={{ background: c.paper, border: `1px solid ${c.line}`, color: c.ink }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:opacity-85 cursor-pointer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full transition-all hover:bg-white/80 active:scale-95 cursor-pointer shadow-sm"
                   aria-label="Previous testimonial"
                 >
                   <ArrowLeft size={16} />
@@ -137,11 +186,14 @@ export const Testimonials: React.FC = () => {
                 <button
                   onClick={handleNext}
                   style={{ background: c.paper, border: `1px solid ${c.line}`, color: c.ink }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:opacity-85 cursor-pointer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full transition-all hover:bg-white/80 active:scale-95 cursor-pointer shadow-sm"
                   aria-label="Next testimonial"
                 >
                   <ArrowRight size={16} />
                 </button>
+                <span style={{ ...mono, color: c.inkFaint }} className="text-xs ml-2">
+                  0{active + 1} / 0{testimonials.length}
+                </span>
               </div>
             </div>
           </div>

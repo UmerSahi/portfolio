@@ -368,35 +368,35 @@ export const testimonials: Testimonial[] = [
       "Umer demonstrates outstanding machine learning intuition and research discipline. His computer vision pipelines and deep learning experiments are structured, clean, and production-ready.",
     name: "Dr. Farooq Ahmad",
     designation: "AI Research Lead",
-    src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop",
+    src: "/avatars/avatar_farooq.jpg",
   },
   {
     quote:
       "Muhammad Umer graduated as the Gold Medalist of his cohort, securing 1st position across the entire department. His thesis on deep transfer learning reflected remarkable analytical rigor.",
     name: "Engr. M. Kashif",
     designation: "Head of Computer Science, KFUEIT",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=3540&auto=format&fit=crop",
+    src: "/avatars/avatar_kashif.jpg",
   },
   {
     quote:
       "Umer's PK Bazar AI agent stood out for its seamless RAG orchestration and natural-language data querying, earning him the Top Performer distinction with a 97.2% score.",
     name: "Zainab Tariq",
     designation: "HEC Hackathon Lead",
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=3540&auto=format&fit=crop",
+    src: "/avatars/avatar_zainab.jpg",
   },
   {
     quote:
       "Working with Umer is fantastic. He connects complex AI backends in FastAPI with clean, snappy frontend interfaces effortlessly, always ensuring high throughput and modularity.",
     name: "Hamza Ali",
     designation: "Full Stack Engineer",
-    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=3540&auto=format&fit=crop",
+    src: "/avatars/avatar_hamza.jpg",
   },
   {
     quote:
       "Umer brings genuine passion to Explainable AI (XAI) and medical diagnostics. His dedication to model interpretability and reliability makes his systems trustworthy and impactful.",
     name: "Bilal Hassan",
     designation: "Data Science Mentor, Netixsol",
-    src: "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?q=80&w=3540&auto=format&fit=crop",
+    src: "/avatars/avatar_bilal.jpg",
   },
 ];
 
