@@ -365,10 +365,10 @@ export const cardConfigs = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Umer demonstrates outstanding machine learning intuition and research discipline. His computer vision pipelines and deep learning experiments are structured, clean, and production-ready.",
-    name: "Dr. Farooq Ahmad",
-    designation: "AI Research Lead",
-    src: "/avatars/avatar_farooq.jpg",
+      "Supervising Muhammad Umer's Final Year Project was an absolute delight. His research rigor in deep transfer learning, independent problem-solving mindset, and dedication to building production-ready AI models set him apart as an exemplary student and researcher.",
+    name: "Dr. Humaira Anwer",
+    designation: "FYP Supervisor, Department of CS",
+    src: "/avatars/avatar_humaira.jpg",
   },
   {
     quote:
