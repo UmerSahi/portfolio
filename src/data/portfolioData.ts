@@ -373,16 +373,16 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Muhammad Umer graduated as the Gold Medalist of his cohort, securing 1st position across the entire department. His thesis on deep transfer learning reflected remarkable analytical rigor.",
-    name: "Engr. M. Kashif",
+    name: "Prof. Dr. Saleemullah",
     designation: "Head of Computer Science, KFUEIT",
-    src: "/avatars/avatar_kashif.jpg",
+    src: "/avatars/avatar_saleemullah.jpg",
   },
   {
     quote:
       "Umer's PK Bazar AI agent stood out for its seamless RAG orchestration and natural-language data querying, earning him the Top Performer distinction with a 97.2% score.",
-    name: "Zainab Tariq",
+    name: "Allah Nawaz",
     designation: "HEC Hackathon Lead",
-    src: "/avatars/avatar_zainab.jpg",
+    src: "/avatars/avatar_allahnawaz.jpg",
   },
   {
     quote:
@@ -394,9 +394,9 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Umer brings genuine passion to Explainable AI (XAI) and medical diagnostics. His dedication to model interpretability and reliability makes his systems trustworthy and impactful.",
-    name: "Bilal Hassan",
+    name: "Qamar",
     designation: "Data Science Mentor, Netixsol",
-    src: "/avatars/avatar_bilal.jpg",
+    src: "/avatars/avatar_qamar.jpg",
   },
 ];
 
