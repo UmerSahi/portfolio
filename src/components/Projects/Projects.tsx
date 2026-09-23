@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, X } from "lucide-react";
 import { c, serif, mono, projects, cardConfigs } from "../../data/portfolioData";
+import type { Project } from "../../types/portfolio";
 import { SectionHead } from "../common/SectionHead";
+import LogoLoop, { type LogoItem } from "../common/LogoLoop/LogoLoop";
 
 const defaultSpring = {
   type: "spring" as const,
@@ -10,15 +12,28 @@ const defaultSpring = {
   damping: 24,
 };
 
+export interface CardProjectItem extends Project {
+  className: string;
+  config: {
+    y: number;
+    rotate: number;
+    zIndex: number;
+  };
+}
+
 export const Projects: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<any | null>(null);
+  const [selectedCard, setSelectedCard] = useState<CardProjectItem | null>(null);
   const [spacing, setSpacing] = useState(180);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setSelectedCard(null);
+        const target = e.target as HTMLElement;
+        if (!target.closest(".logoloop")) {
+          setSelectedCard(null);
+        }
       }
     };
     document.addEventListener("mousedown", handleOutsideClick);
@@ -28,6 +43,7 @@ export const Projects: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       const w = window.innerWidth;
+      setIsMobile(w < 768);
       setSpacing(Math.round(w >= 1024 ? 180 * 0.78 : w >= 600 ? 180 * 0.55 : 180 * 0.28));
     };
     handleResize();
@@ -36,31 +52,40 @@ export const Projects: React.FC = () => {
   }, []);
 
   // All 11 projects in 3D Fan Deck (RealEstate Hub 1st, PK Bazar AI 8th, etc.)
-  const cardItems = projects.map((proj, idx) => {
-    const config = cardConfigs[idx % cardConfigs.length];
-    return {
-      ...proj,
-      className: config.className,
-      config: {
-        y: config.y,
-        rotate: config.rotate,
-        // Reverse zIndex so card 0 (RealEstate Hub) is on top in front, followed by subsequent projects
-        zIndex: (projects.length - idx) + 2,
-      },
-    };
-  });
+  const cardItems = useMemo(() => {
+    return projects.map((proj, idx) => {
+      const config = cardConfigs[idx % cardConfigs.length];
+      return {
+        ...proj,
+        className: config.className,
+        config: {
+          y: config.y,
+          rotate: config.rotate,
+          // Reverse zIndex so card 0 (RealEstate Hub) is on top in front, followed by subsequent projects
+          zIndex: (projects.length - idx) + 2,
+        },
+      };
+    });
+  }, []);
+
+  const logoItems = useMemo(() => {
+    return cardItems.map((item) => ({
+      ...item,
+      title: item.title,
+    }));
+  }, [cardItems]);
 
   const centerIndex = (cardItems.length - 1) / 2;
   const isAnySelected = () => !!selectedCard;
-  const isSelected = (item: any) => selectedCard?.title === item.title;
+  const isSelected = (item: { title?: string }) => !!item.title && selectedCard?.title === item.title;
 
   return (
-    <section id="work" style={{ padding: "100px 0 70px", position: "relative", overflow: "hidden" }}>
+    <section id="work" style={{ padding: "clamp(60px, 10vh, 100px) 0 70px", position: "relative", overflow: "hidden" }}>
       <div
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "0 24px",
+          padding: "0 clamp(14px, 3.5vw, 24px)",
           width: "100%",
           position: "relative",
           zIndex: 1,
@@ -69,7 +94,13 @@ export const Projects: React.FC = () => {
         <SectionHead index="03" title="Selected" em="work" />
 
         {/* Header Subtitle */}
-        <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: "center", marginBottom: 20 }}
+        >
           <p
             style={{
               ...mono,
@@ -97,10 +128,16 @@ export const Projects: React.FC = () => {
           >
             Interactive 3D Fan Deck · Click any card or selector below to inspect architecture & live repositories
           </p>
-        </div>
+        </motion.div>
 
         {/* 3D Stacked Fan Cards Deck */}
-        <div className="mt-2 sm:mt-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-2 sm:mt-4"
+        >
           <div
             className="relative flex h-full w-full items-center justify-center pt-6 sm:pt-10 pb-4"
             style={{ minHeight: "500px" }}
@@ -135,15 +172,15 @@ export const Projects: React.FC = () => {
                     animate={{
                       y: active ? 0 : hasActive ? item.config.y * 0.35 : item.config.y,
                       x: active
-                        ? "-36%"
+                        ? (isMobile ? "0%" : "-36%")
                         : hasActive
-                        ? `calc(var(--width) * 0.94 + ${offsetX * 0.35}px)`
-                        : offsetX,
+                          ? (isMobile ? `${offsetX * 0.3}px` : `calc(var(--width) * 0.94 + ${offsetX * 0.35}px)`)
+                          : offsetX,
                       rotate: active ? 0 : hasActive ? 0.15 * item.config.rotate : item.config.rotate,
-                      scale: active ? 1.14 : hasActive ? 0.65 : 1,
+                      scale: active ? (isMobile ? 1.02 : 1.14) : hasActive ? (isMobile ? 0.55 : 0.65) : 1,
                     }}
                     whileHover={{
-                      scale: active ? 1.14 : hasActive ? 0.65 : 1.05,
+                      scale: active ? (isMobile ? 1.02 : 1.14) : hasActive ? 0.65 : 1.05,
                       y: active ? 0 : item.config.y - 12,
                     }}
                     transition={defaultSpring}
@@ -359,47 +396,65 @@ export const Projects: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Quick Card Selector Pill Bar (All 11 projects accessible directly) */}
+          {/* React Bits LogoLoop: Infinite loop for project names until a card is selected */}
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 6,
-              flexWrap: "wrap",
-              marginTop: 20,
-              padding: "0 12px",
-              maxWidth: 1040,
-              marginLeft: "auto",
-              marginRight: "auto",
+              position: "relative",
+              maxWidth: 1120,
+              margin: "18px auto 0",
+              padding: "4px 0",
             }}
           >
-            {cardItems.map((item) => {
-              const active = isSelected(item);
-              return (
-                <button
-                  key={item.title}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedCard(active ? null : item);
-                  }}
-                  style={{
-                    ...mono,
-                    fontSize: 10.5,
-                    padding: "5px 11px",
-                    borderRadius: 14,
-                    border: `1px solid ${active ? c.clay : c.line}`,
-                    background: active ? c.clay : "rgba(255,255,255,0.6)",
-                    color: active ? c.paper : c.ink,
-                    cursor: "pointer",
-                    fontWeight: active ? 700 : 500,
-                    transition: "all 0.2s ease",
-                    boxShadow: active ? "0 2px 8px rgba(164,89,47,0.25)" : "none",
-                  }}
-                >
-                  {item.index} · {item.title.split("—")[0].trim()}
-                </button>
-              );
-            })}
+            <LogoLoop
+              logos={logoItems}
+              speed={selectedCard ? 0 : 65}
+              direction="left"
+              gap={12}
+              logoHeight={36}
+              fadeOut={true}
+              fadeOutColor={c.bg}
+              pauseOnHover={true}
+              hoverSpeed={0}
+              ariaLabel="Project names loop"
+              renderItem={(item: LogoItem) => {
+                const active = isSelected(item);
+                return (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const found = cardItems.find((card) => card.title === item.title);
+                      setSelectedCard(active ? null : (found ?? null));
+                    }}
+                    style={{
+                      ...mono,
+                      fontSize: 11,
+                      padding: "7px 14px",
+                      borderRadius: 999,
+                      border: `1px solid ${active ? c.clay : c.line}`,
+                      background: active ? c.clay : "rgba(255,255,255,0.72)",
+                      color: active ? c.paper : c.ink,
+                      cursor: "pointer",
+                      fontWeight: active ? 700 : 500,
+                      transition: "all 0.2s ease",
+                      boxShadow: active
+                        ? "0 4px 12px rgba(164,89,47,0.28)"
+                        : "0 1px 4px rgba(0,0,0,0.04)",
+                      whiteSpace: "nowrap",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                    }}
+                    title={`Click to inspect ${item.title ?? ""}`}
+                  >
+                    <span style={{ color: active ? c.paper : c.clay, fontWeight: 700 }}>
+                      {item.index}
+                    </span>
+                    <span>·</span>
+                    <span>{(item.title ?? "").split("—")[0].trim()}</span>
+                  </button>
+                );
+              }}
+            />
           </div>
 
           {/* Helper deselect prompt when a card is selected */}
@@ -422,7 +477,7 @@ export const Projects: React.FC = () => {
               </button>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
