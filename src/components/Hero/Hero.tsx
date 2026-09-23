@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, type MotionValue } from "framer-motion";
 import { Download } from "lucide-react";
 import { c, serif, mono, WORDS } from "../../data/portfolioData";
 
 interface DocLayerProps {
-  mx: any;
-  my: any;
+  mx: MotionValue<number>;
+  my: MotionValue<number>;
   depth: number;
   rotate: number;
   imageSrc: string;
@@ -96,10 +96,7 @@ export const Hero: React.FC = () => {
   const orbitTranslateY = useTransform(smoothY, [-0.5, 0.5], [15, -15]);
   const orbitRotate = useTransform(smoothX, [-0.5, 0.5], [-15, 15]);
 
-  // Google Flow: Interactive floating badge parallax
-  const badgeTranslateX = useTransform(smoothX, [-0.5, 0.5], [-35, 35]);
-  const badgeTranslateY = useTransform(smoothY, [-0.5, 0.5], [-28, 28]);
-  const badgeRotate = useTransform(smoothX, [-0.5, 0.5], [-5, 5]);
+
 
   // Google Flow: Dynamic ground contact shadow
   const shadowTranslateX = useTransform(smoothX, [-0.5, 0.5], [22, -22]);
@@ -150,7 +147,7 @@ export const Hero: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        padding: "110px 32px 60px",
+        padding: "clamp(85px, 12vh, 120px) clamp(16px, 4vw, 32px) clamp(40px, 6vh, 60px)",
         overflow: "hidden",
       }}
     >
@@ -217,7 +214,7 @@ export const Hero: React.FC = () => {
           style={{
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "1.2fr 1fr",
-            gap: isMobile ? "48px" : "40px",
+            gap: isMobile ? "36px" : "40px",
             alignItems: "center",
           }}
           className="kk-grid-collapse"
@@ -230,64 +227,86 @@ export const Hero: React.FC = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                fontSize: 12,
-                letterSpacing: 2,
+                fontSize: "clamp(10px, 2.5vw, 12px)",
+                letterSpacing: "clamp(1px, 0.4vw, 2px)",
                 textTransform: "uppercase",
                 color: c.clay,
-                marginBottom: 26,
+                marginBottom: 20,
+                flexWrap: "wrap",
               }}
             >
-              <span style={{ width: 26, height: 1, background: c.clay }} />
+              <span style={{ width: 22, height: 1, background: c.clay }} />
               CS Gold Medalist — AI & Systems Engineer
             </div>
 
             <h1
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 600,
-                letterSpacing: "-0.03em",
-                lineHeight: 1.05,
-                fontSize: "clamp(32px, 5vw, 62px)",
+                fontWeight: 700,
+                letterSpacing: "-0.025em",
+                lineHeight: 1.15,
+                fontSize: "clamp(30px, 3.8vw, 54px)",
                 maxWidth: 750,
                 color: c.ink,
-                margin: "0 0 16px 0",
+                margin: "0 0 10px 0",
               }}
             >
               Muhammad Umer Sahi
-              <br />
-              <span style={{ whiteSpace: "nowrap" }}>
-                Building,{" "}
-                <span
+            </h1>
+
+            <motion.div
+              layout
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
+                fontSize: "clamp(20px, 2.5vw, 34px)",
+                lineHeight: 1.3,
+                color: c.ink,
+                margin: "0 0 18px 0",
+                display: "flex",
+                alignItems: "baseline",
+                flexWrap: "wrap",
+                gap: "0.28em",
+              }}
+            >
+              <span>Building</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={wordIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
                   style={{
                     display: "inline-block",
-                    width: "7.5em",
-                    position: "relative",
-                    verticalAlign: "bottom",
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={wordIndex}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ position: "absolute", left: 0, bottom: 0, whiteSpace: "nowrap" }}
-                    >
-                      <em style={{ fontStyle: "italic", fontWeight: 500, color: c.mossDeep, ...serif }}>
-                        {WORDS[wordIndex]}
-                      </em>
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-              </span>{" "}
-              systems.
-            </h1>
+                  <em
+                    style={{
+                      fontStyle: "italic",
+                      fontWeight: 500,
+                      color: c.mossDeep,
+                      ...serif,
+                    }}
+                  >
+                    {WORDS[wordIndex]}
+                  </em>
+                </motion.span>
+              </AnimatePresence>
+              <motion.span
+                layout
+                transition={{ duration: 0.22, ease: "easeOut" }}
+              >
+                systems.
+              </motion.span>
+            </motion.div>
 
             <p
               style={{
-                marginTop: 26,
-                fontSize: 18,
+                marginTop: "clamp(16px, 3vw, 26px)",
+                fontSize: "clamp(15px, 2.2vw, 18px)",
                 color: c.inkSoft,
                 maxWidth: 560,
                 lineHeight: 1.6,
@@ -296,37 +315,14 @@ export const Hero: React.FC = () => {
               I'm an AI/ML Engineer and Computer Science Gold Medalist passionate about building human-centered AI, multimodal vision models, and high-performance full-stack architectures.
             </p>
 
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: "clamp(20px, 4vw, 32px)" }}>
               <a
                 href="/Muhammad_Umer_Sarfraz_Sahi_CV.pdf"
                 download="Muhammad_Umer_Sarfraz_Sahi_CV.pdf"
-                style={{
-                  ...mono,
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  fontSize: 13,
-                  fontWeight: 600,
-                  letterSpacing: "0.5px",
-                  textTransform: "uppercase",
-                  padding: "14px 28px",
-                  background: c.mossDeep,
-                  color: c.paper,
-                  borderRadius: 6,
-                  boxShadow: "0 8px 24px rgba(60,68,50,0.25)",
-                  transition: "all 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = c.clay;
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = c.mossDeep;
-                  e.currentTarget.style.transform = "none";
-                }}
+                className="kk-hire-btn"
+                style={{ ...mono }}
               >
-                <Download size={16} />
+                <Download size={14} />
                 Download CV
               </a>
             </div>
@@ -341,7 +337,7 @@ export const Hero: React.FC = () => {
               alignItems: "center",
               perspective: 1200,
               perspectiveOrigin: "50% 50%",
-              minHeight: isMobile ? 360 : 500,
+              minHeight: isMobile ? 320 : 480,
             }}
           >
             {/* Google Flow: Ambient dynamic aura tracking */}
@@ -473,62 +469,7 @@ export const Hero: React.FC = () => {
               />
             </motion.div>
 
-            {/* Floating Status Badge Parallax */}
-            <motion.div
-              style={{
-                position: "absolute",
-                bottom: isMobile ? "4%" : "8%",
-                left: isMobile ? "4%" : "-4%",
-                zIndex: 5,
-                x: badgeTranslateX,
-                y: badgeTranslateY,
-                rotate: badgeRotate,
-              }}
-              animate={{
-                y: [0, -6, 0],
-              }}
-              transition={{
-                duration: 3.6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.4,
-              }}
-            >
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "8px 16px",
-                  borderRadius: 999,
-                  background: "rgba(244, 239, 225, 0.9)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(42, 39, 30, 0.16)",
-                  boxShadow: "0 12px 24px -6px rgba(42, 39, 30, 0.18)",
-                }}
-              >
-                <span
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    backgroundColor: "#10B981",
-                    boxShadow: "0 0 10px rgba(16, 185, 129, 0.8)",
-                  }}
-                />
-                <span
-                  style={{
-                    ...mono,
-                    fontSize: 12,
-                    fontWeight: 600,
-                    color: c.ink,
-                    letterSpacing: "0.2px",
-                  }}
-                >
-                  Interactive 3D Avatar • AI & ML
-                </span>
-              </div>
-            </motion.div>
+
           </div>
         </div>
       </div>

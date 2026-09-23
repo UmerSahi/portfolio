@@ -15,19 +15,30 @@
   --line-strong: rgba(42, 39, 30, 0.28);
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   background-color: var(--bg);
   color: var(--ink);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   background-color: var(--bg);
   color: var(--ink);
   overflow-x: hidden;
+  width: 100%;
   margin: 0;
   padding: 0;
+}
+
+img, video, canvas {
+  max-width: 100%;
 }
 
 ::selection {
@@ -85,4 +96,33 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-stopped {
   overflow: hidden;
+}
+
+/* Unified Primary Action Button (Contact Me & Download CV) */
+.kk-hire-btn {
+  background: var(--moss-deep) !important;
+  color: var(--paper) !important;
+  padding: 9px clamp(14px, 2vw, 20px) !important;
+  border-radius: 6px !important;
+  border: none !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 14px rgba(42, 39, 30, 0.15) !important;
+}
+
+.kk-hire-btn:hover {
+  background: var(--clay) !important;
+  color: var(--paper) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(164, 89, 47, 0.25) !important;
 }
