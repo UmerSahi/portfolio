@@ -168,11 +168,11 @@ export const Experience: React.FC = () => {
             style={{
               position: "absolute",
               left: 70,
+              marginLeft: -12,
               top: 0,
               bottom: 0,
               width: 24,
               background: "#32372A",
-              transform: "translateX(-50%)",
               transformOrigin: "top",
               borderRadius: 12,
               border: `2px solid ${c.lineStrong}`,
@@ -793,6 +793,7 @@ export const Experience: React.FC = () => {
         @media (max-width: 800px) {
           .kk-road-track {
             left: 36px !important;
+            margin-left: -10px !important;
             width: 20px !important;
           }
           .kk-milestone-row {
@@ -801,6 +802,8 @@ export const Experience: React.FC = () => {
           }
           .kk-milestone-left {
             padding-top: 10px !important;
+            width: 72px !important;
+            align-items: center !important;
           }
           .kk-milestone-dot {
             width: 36px !important;
@@ -815,6 +818,8 @@ export const Experience: React.FC = () => {
             margin-top: 12px !important;
             padding: 5px 8px !important;
             min-width: 64px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
           }
           .kk-milestone-date > div:first-child {
             font-size: 8px !important;
@@ -830,11 +835,16 @@ export const Experience: React.FC = () => {
         @media (max-width: 580px) {
           .kk-road-track {
             left: 18px !important;
+            margin-left: -7px !important;
             width: 14px !important;
           }
           .kk-milestone-row {
             grid-template-columns: 36px 1fr !important;
             gap: 12px !important;
+          }
+          .kk-milestone-left {
+            width: 36px !important;
+            align-items: center !important;
           }
           .kk-milestone-dot {
             width: 30px !important;
