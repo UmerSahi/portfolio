@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { LayoutGroup } from "framer-motion";
+import { LayoutGroup, motion, useScroll, useSpring } from "framer-motion";
 import Lenis from "lenis";
 import { c, sans } from "./data/portfolioData";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -22,6 +22,14 @@ export const App: React.FC = () => {
   const [, setPlacedSkills] = useState<string[]>([]);
   const [gameState, setGameState] = useState<"idle" | "playing" | "won">("idle");
   const mouseRef = useRef({ x: 0, y: 0 });
+
+  // Scroll progress bar
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   // Mouse position tracking & Section collision detection
   useEffect(() => {
@@ -89,10 +97,14 @@ export const App: React.FC = () => {
   // Lenis smooth scroll initialization
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.35,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.5,
     });
+
+    (window as any).lenis = lenis;
 
     let rafId: number;
     const raf = (time: number) => {
@@ -104,6 +116,7 @@ export const App: React.FC = () => {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete (window as any).lenis;
     };
   }, []);
 
@@ -111,6 +124,22 @@ export const App: React.FC = () => {
 
   return (
     <LayoutGroup>
+      {/* Smooth scroll indicator line at top */}
+      <motion.div
+        style={{
+          scaleX,
+          transformOrigin: "0%",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 3,
+          background: "linear-gradient(90deg, #A4592F 0%, #A98436 50%, #566047 100%)",
+          zIndex: 2000,
+          pointerEvents: "none",
+        }}
+      />
+
       <div
         style={{
           ...sans,
@@ -126,10 +155,6 @@ export const App: React.FC = () => {
         {/* Global responsive and interaction styling */}
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
-          
-          html {
-            scroll-behavior: smooth;
-          }
           
           ::selection {
             background: ${c.moss};

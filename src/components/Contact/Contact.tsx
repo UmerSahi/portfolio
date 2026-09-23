@@ -155,7 +155,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       style={{
-        padding: "100px 0 80px",
+        padding: "clamp(60px, 10vh, 100px) 0 clamp(50px, 8vh, 80px)",
         background: c.bgDeep,
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
@@ -270,7 +270,7 @@ export const Contact: React.FC = () => {
         }
       `}</style>
 
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 clamp(14px, 3.5vw, 32px)" }}>
         <SectionHead index="08" title="Let's" em="talk" />
 
         <div className="kk-contact-grid">
