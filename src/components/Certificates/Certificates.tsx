@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { Eye, ExternalLink, ShieldCheck, Award, Calendar, ChevronUp, ChevronDown, Sparkles } from "lucide-react";
 import { ScrollStack, ScrollStackItem } from "./ScrollStack";
 import { CertificateModal } from "./CertificateModal";
@@ -26,7 +27,7 @@ export const Certificates: React.FC = () => {
     <section
       id="certificates"
       style={{
-        padding: "100px 0 60px",
+        padding: "clamp(60px, 10vh, 100px) 0 60px",
         position: "relative",
       }}
     >
@@ -48,12 +49,16 @@ export const Certificates: React.FC = () => {
           zIndex: 5,
           maxWidth: 1080,
           margin: "0 auto",
-          padding: "0 32px",
+          padding: "0 clamp(14px, 3.5vw, 32px)",
           width: "100%",
         }}
       >
         {/* Section Header */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           style={{
             display: "flex",
             alignItems: "flex-end",
@@ -174,15 +179,19 @@ export const Certificates: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ScrollStack Container */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{
             position: "relative",
-            height: "690px",
+            height: "clamp(550px, 80vh, 690px)",
             maxHeight: "86vh",
-            borderRadius: 28,
+            borderRadius: 24,
             border: `1px solid rgba(184, 90, 58, 0.22)`,
             background: "rgba(244, 239, 225, 0.45)",
             backdropFilter: "blur(12px)",
@@ -248,12 +257,15 @@ export const Certificates: React.FC = () => {
             {certificatesData.map((cert, index) => {
               const isGold = cert.badgeType === "gold";
               const isMoss = cert.badgeType === "moss";
-              const accentColor = isGold ? "#C97A3E" : isMoss ? c.mossDeep : c.clay;
-              const badgeBg = isGold
-                ? "rgba(201, 122, 62, 0.12)"
-                : isMoss
-                ? "rgba(26, 56, 38, 0.1)"
-                : "rgba(184, 90, 58, 0.12)";
+              const accentColor =
+                cert.cardTheme?.accent || (isGold ? "#C97A3E" : isMoss ? c.mossDeep : c.clay);
+              const badgeBg =
+                cert.cardTheme?.badgeBg ||
+                (isGold
+                  ? "rgba(201, 122, 62, 0.12)"
+                  : isMoss
+                    ? "rgba(26, 56, 38, 0.1)"
+                    : "rgba(184, 90, 58, 0.12)");
 
               return (
                 <ScrollStackItem
@@ -592,7 +604,7 @@ export const Certificates: React.FC = () => {
               );
             })}
           </ScrollStack>
-        </div>
+        </motion.div>
       </div>
 
       {/* Global CSS for hover effects and responsiveness */}

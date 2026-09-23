@@ -42,7 +42,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "24px 16px",
+        padding: "clamp(12px, 3vw, 24px) clamp(8px, 2vw, 16px)",
         overflowY: "auto",
         animation: "kkFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       }}
@@ -60,9 +60,9 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          padding: 8px 14px;
+          padding: 8px 12px;
           border-radius: 8px;
-          font-size: 12px;
+          font-size: 11.5px;
           font-weight: 500;
           cursor: pointer;
           transition: all 0.2s ease;
@@ -79,7 +79,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
         style={{
           background: "linear-gradient(180deg, #FBF8F1 0%, #F4EFE3 100%)",
           border: "1px solid rgba(184, 90, 58, 0.3)",
-          borderRadius: 24,
+          borderRadius: 20,
           maxWidth: 960,
           width: "100%",
           maxHeight: "92vh",
@@ -93,13 +93,13 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ certificate,
         {/* Header Bar */}
         <div
           style={{
-            padding: "16px 24px",
+            padding: "clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 24px)",
             borderBottom: `1px solid ${c.line}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             background: "rgba(255, 255, 255, 0.5)",
-            gap: 16,
+            gap: 12,
             flexWrap: "wrap",
           }}
         >

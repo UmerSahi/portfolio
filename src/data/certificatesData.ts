@@ -14,87 +14,12 @@ export interface CertificateItem {
     bg: string;
     border: string;
     accent: string;
+    badgeBg?: string;
   };
 }
 
 export const certificatesData: CertificateItem[] = [
-  {
-    id: "google-digital-marketing",
-    title: "Google Digital Marketing & E-commerce Professional Certificate",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Career Certificate · 7 Courses",
-    badgeType: "clay",
-    description:
-      "Successfully completed the comprehensive 7-course Professional Certificate developed by Google, demonstrating rigorous mastery in e-commerce architecture, marketing analytics, customer acquisition funnels, and email automation.",
-    skills: [
-      "Digital Marketing",
-      "E-Commerce Architecture",
-      "Marketing Analytics",
-      "Customer Acquisition",
-      "Email Automation",
-      "Store Management",
-    ],
-    image: "/certificates/google_digital_marketing.jpg",
-    credentialId: "NWSJ6WXZ6U6O",
-    verifyUrl: "https://coursera.org/verify/professional-cert/NWSJ6WXZ6U6O",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "hec-genai-developer",
-    title: "Generative AI Application Developer Certificate",
-    issuer: "NCEAC · HEC & ULEF USA",
-    date: "30th May, 2026",
-    badge: "Top Performer Awarded · Cohort 3",
-    badgeType: "moss",
-    description:
-      "Proudly awarded by ULEF USA in collaboration with NCEAC, HEC, and PakAngels upon successful completion of the intensive Generative AI Training (Cohort 3), recognized with the prestigious Top Performer Award for excellence in LLM application development, multi-agent orchestration, and modern AI architectures.",
-    skills: [
-      "Generative AI",
-      "LLM Applications",
-      "LangGraph",
-      "Multi-Agent Systems",
-      "RAG Architectures",
-      "Prompt Engineering",
-    ],
-    image: "/certificates/hec_genai_hackathon.jpg",
-    credentialId: "a05c0ef39677b12a",
-    verifyUrl: "https://hec.gov.pk/",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #F5F8F4 0%, #EBF2EC 100%)",
-      border: "rgba(26, 56, 38, 0.28)",
-      accent: "#1A3826",
-    },
-  },
-  {
-    id: "enablers-worc",
-    title: "WORC Completion Certificate",
-    issuer: "WORC by Enablers",
-    date: "Nov 06, 2024",
-    badge: "WORC Completion · Enablers",
-    badgeType: "clay",
-    description:
-      "Conferred upon successfully completing 3 months of membership at WORC, demonstrating strong commitment to professional development, e-commerce, IT innovation, and active contributions to team projects.",
-    skills: [
-      "E-Commerce",
-      "IT Innovation",
-      "Data Analytics",
-      "Team Projects",
-      "WORC Community",
-    ],
-    image: "/certificates/enablers_worc.jpg",
-    credentialId: "WORC-ENB-2024-MS",
-    verifyUrl: "https://www.enablers.org/",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF6F2 0%, #F5EDE6 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
+  // 1st: Google AI Essentials Specialization
   {
     id: "google-ai-essentials",
     title: "Google AI Essentials Specialization Certificate",
@@ -116,9 +41,68 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "623JYSW78PS6",
     verifyUrl: "https://coursera.org/verify/specialization/623JYSW78PS6",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F3EDE2 100%)",
+      bg: "linear-gradient(135deg, #FAF7F4 0%, #F4EAE2 100%)",
       border: "rgba(184, 90, 58, 0.28)",
       accent: "#B85A3A",
+      badgeBg: "rgba(184, 90, 58, 0.12)",
+    },
+  },
+
+  // 2nd: Google Digital Marketing & E-commerce Professional Certificate
+  {
+    id: "google-digital-marketing",
+    title: "Google Digital Marketing & E-commerce Professional Certificate",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Career Certificate · 7 Courses",
+    badgeType: "gold",
+    description:
+      "Successfully completed the comprehensive 7-course Professional Certificate developed by Google, demonstrating rigorous mastery in e-commerce architecture, marketing analytics, customer acquisition funnels, and email automation.",
+    skills: [
+      "Digital Marketing",
+      "E-Commerce Architecture",
+      "Marketing Analytics",
+      "Customer Acquisition",
+      "Email Automation",
+      "Store Management",
+    ],
+    image: "/certificates/google_digital_marketing.jpg",
+    credentialId: "NWSJ6WXZ6U6O",
+    verifyUrl: "https://coursera.org/verify/professional-cert/NWSJ6WXZ6U6O",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #FAF8F2 0%, #F5ECE0 100%)",
+      border: "rgba(169, 132, 54, 0.28)",
+      accent: "#A98436",
+      badgeBg: "rgba(169, 132, 54, 0.12)",
+    },
+  },
+
+  // 3rd: Hackathons Certificates
+  {
+    id: "fortyguard-hackathon",
+    title: "FortyGuard Hackathon'26 — ThermoSense AI",
+    issuer: "FortyGuard",
+    date: "August 18–30, 2026",
+    badge: "FortyGuard Hackathon'26 · Demonstrated Excellence",
+    badgeType: "moss",
+    description:
+      "Awarded to Muhammad Umer Sarfraz Sahi for successfully completing FortyGuard Hackathon'26 and demonstrating creativity, technical excellence, and innovation through the development of ThermoSense AI: an AI-powered heat risk intelligence platform.",
+    skills: [
+      "ThermoSense AI",
+      "Heat Risk Intelligence",
+      "Environmental AI",
+      "Computer Vision & Sensing",
+      "Predictive Modeling",
+      "Full-Stack AI",
+    ],
+    image: "/certificates/fortyguard_hackathon.jpg",
+    credentialId: "FG-HACK26-TS-01",
+    verifyUrl: "https://www.fortyguard.com/",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #F6F8F4 0%, #EBF1E8 100%)",
+      border: "rgba(60, 68, 50, 0.28)",
+      accent: "#3C4432",
+      badgeBg: "rgba(60, 68, 50, 0.12)",
     },
   },
   {
@@ -142,11 +126,41 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "CMSR96SBL00X1S601BEZD432X",
     verifyUrl: "https://lablab.ai/",
     cardTheme: {
-      bg: "linear-gradient(135deg, #F6F8FB 0%, #ECF1F7 100%)",
-      border: "rgba(26, 56, 90, 0.28)",
-      accent: "#1A385A",
+      bg: "linear-gradient(135deg, #F6F8F5 0%, #ECEFE9 100%)",
+      border: "rgba(86, 96, 71, 0.28)",
+      accent: "#566047",
+      badgeBg: "rgba(86, 96, 71, 0.12)",
     },
   },
+  {
+    id: "hec-genai-developer",
+    title: "Generative AI Application Developer Certificate",
+    issuer: "NCEAC · HEC & ULEF USA",
+    date: "30th May, 2026",
+    badge: "Top Performer Awarded · Cohort 3",
+    badgeType: "moss",
+    description:
+      "Proudly awarded by ULEF USA in collaboration with NCEAC, HEC, and PakAngels upon successful completion of the intensive Generative AI Training (Cohort 3), recognized with the prestigious Top Performer Award for excellence in LLM application development, multi-agent orchestration, and modern AI architectures.",
+    skills: [
+      "Generative AI",
+      "LLM Applications",
+      "LangGraph",
+      "Multi-Agent Systems",
+      "RAG Architectures",
+      "Prompt Engineering",
+    ],
+    image: "/certificates/hec_genai_hackathon.jpg",
+    credentialId: "a05c0ef39677b12a",
+    verifyUrl: "https://hec.gov.pk/",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #F7F8F3 0%, #ECEFE5 100%)",
+      border: "rgba(78, 90, 61, 0.28)",
+      accent: "#4E5A3D",
+      badgeBg: "rgba(78, 90, 61, 0.12)",
+    },
+  },
+
+  // 4th: Internship Certificates
   {
     id: "tjp-web-developer",
     title: "Web Developer Internship Experience Certificate",
@@ -168,11 +182,40 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "R/EL/760/31/01/2025",
     verifyUrl: "https://www.journalpost.com",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4EDE3 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF6F3 0%, #F5EAE3 100%)",
+      border: "rgba(164, 89, 47, 0.28)",
+      accent: "#A4592F",
+      badgeBg: "rgba(164, 89, 47, 0.12)",
     },
   },
+  {
+    id: "enablers-worc",
+    title: "WORC Completion Certificate",
+    issuer: "WORC by Enablers",
+    date: "Nov 06, 2024",
+    badge: "WORC Completion · Enablers",
+    badgeType: "clay",
+    description:
+      "Conferred upon successfully completing 3 months of membership at WORC, demonstrating strong commitment to professional development, e-commerce, IT innovation, and active contributions to team projects.",
+    skills: [
+      "E-Commerce",
+      "IT Innovation",
+      "Data Analytics",
+      "Team Projects",
+      "WORC Community",
+    ],
+    image: "/certificates/enablers_worc.jpg",
+    credentialId: "WORC-ENB-2024-MS",
+    verifyUrl: "https://www.enablers.org/",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #FAF7F2 0%, #F5ECE1 100%)",
+      border: "rgba(184, 115, 42, 0.28)",
+      accent: "#B8732A",
+      badgeBg: "rgba(184, 115, 42, 0.12)",
+    },
+  },
+
+  // 5th: Rest of Google Certificates (AI Courses followed by E-commerce/Digital Marketing)
   {
     id: "google-intro-to-ai",
     title: "Introduction to AI Course Certificate",
@@ -193,9 +236,10 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "XRQ9VWYWEOWC",
     verifyUrl: "https://coursera.org/verify/XRQ9VWYWEOWC",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF8F5 0%, #F3EDE2 100%)",
+      border: "rgba(104, 96, 76, 0.26)",
+      accent: "#68604C",
+      badgeBg: "rgba(104, 96, 76, 0.12)",
     },
   },
   {
@@ -204,7 +248,7 @@ export const certificatesData: CertificateItem[] = [
     issuer: "Google · Coursera",
     date: "Sep 7, 2026",
     badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
+    badgeType: "moss",
     description:
       "Official Course Certificate authorized by Google and offered through Coursera, validating competencies in leveraging cutting-edge AI tools to streamline day-to-day workflows, accelerate research, automate repetitive tasks, and maximize operational productivity.",
     skills: [
@@ -219,9 +263,10 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "JZ4RM8E6BHBT",
     verifyUrl: "https://coursera.org/verify/JZ4RM8E6BHBT",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #F7F8F4 0%, #ECF1E7 100%)",
+      border: "rgba(91, 108, 67, 0.28)",
+      accent: "#5B6C43",
+      badgeBg: "rgba(91, 108, 67, 0.12)",
     },
   },
   {
@@ -230,7 +275,7 @@ export const certificatesData: CertificateItem[] = [
     issuer: "Google · Coursera",
     date: "Sep 7, 2026",
     badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
+    badgeType: "gold",
     description:
       "Official Course Certificate authorized by Google and offered through Coursera, validating specialized expertise in structured prompt design, contextual framing, few-shot prompting, and eliciting optimal, nuanced reasoning from modern Large Language Models.",
     skills: [
@@ -245,9 +290,10 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "S428H5HJQYFC",
     verifyUrl: "https://coursera.org/verify/S428H5HJQYFC",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF8F1 0%, #F5EDE2 100%)",
+      border: "rgba(160, 122, 24, 0.28)",
+      accent: "#A07A18",
+      badgeBg: "rgba(160, 122, 24, 0.12)",
     },
   },
   {
@@ -256,7 +302,7 @@ export const certificatesData: CertificateItem[] = [
     issuer: "Google · Coursera",
     date: "Sep 7, 2026",
     badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
+    badgeType: "moss",
     description:
       "Official Course Certificate authorized by Google and offered through Coursera, validating competencies in AI ethics, mitigating bias and hallucinations, data privacy compliance, responsible AI governance, and safety evaluation frameworks.",
     skills: [
@@ -271,9 +317,10 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "44CCZ0X7Q774",
     verifyUrl: "https://coursera.org/verify/44CCZ0X7Q774",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #F5F8F6 0%, #E9F1EC 100%)",
+      border: "rgba(55, 84, 67, 0.28)",
+      accent: "#375443",
+      badgeBg: "rgba(55, 84, 67, 0.12)",
     },
   },
   {
@@ -297,139 +344,10 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "ZLVJBS9UL2KM",
     verifyUrl: "https://coursera.org/verify/ZLVJBS9UL2KM",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "google-ecommerce-make-the-sale",
-    title: "Make the Sale: Build, Launch, and Manage E-commerce Stores",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
-    description:
-      "Official Course Certificate authorized by Google and offered through Coursera, demonstrating competencies in building, launching, and managing online stores using Shopify, optimizing checkout funnels, and managing inventory.",
-    skills: [
-      "E-Commerce Stores",
-      "Shopify Management",
-      "Store Architecture",
-      "Checkout Optimization",
-      "Inventory Management",
-      "Google Digital",
-    ],
-    image: "/certificates/google_ecommerce_make_the_sale.jpg",
-    credentialId: "M4GJKAX97Y7F",
-    verifyUrl: "https://coursera.org/verify/M4GJKAX97Y7F",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "google-ecommerce-email-marketing",
-    title: "Think Outside the Inbox: Email Marketing",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
-    description:
-      "Official Course Certificate authorized by Google and offered through Coursera, validating expertise in designing high-converting email marketing campaigns, list segmentation, automation workflows, and A/B testing.",
-    skills: [
-      "Email Marketing",
-      "Marketing Automation",
-      "List Segmentation",
-      "Campaign Strategy",
-      "A/B Testing",
-      "Customer Retention",
-    ],
-    image: "/certificates/google_ecommerce_email_marketing.jpg",
-    credentialId: "0WKU3HV04AK5",
-    verifyUrl: "https://coursera.org/verify/0WKU3HV04AK5",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "google-ecommerce-attract-engage",
-    title: "Attract and Engage Customers with Digital Marketing",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
-    description:
-      "Official Course Certificate authorized by Google and offered through Coursera, focusing on search engine optimization (SEO), search engine marketing (SEM), paid display advertising, and omnichannel acquisition funnels.",
-    skills: [
-      "Customer Acquisition",
-      "SEO & SEM",
-      "Display Advertising",
-      "Search Marketing",
-      "Audience Targeting",
-      "Campaign Optimization",
-    ],
-    image: "/certificates/google_ecommerce_attract_engage.jpg",
-    credentialId: "0QEIF0T1BKY2",
-    verifyUrl: "https://coursera.org/verify/0QEIF0T1BKY2",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "google-ecommerce-marketing-analytics",
-    title: "Assess for Success: Marketing Analytics and Measurement",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
-    description:
-      "Official Course Certificate authorized by Google and offered through Coursera, covering marketing analytics, KPI tracking, Google Analytics 4, return on ad spend (ROAS) optimization, and data-driven insights.",
-    skills: [
-      "Marketing Analytics",
-      "Google Analytics 4",
-      "KPI Tracking",
-      "ROAS Optimization",
-      "Data Modeling",
-      "Performance Reporting",
-    ],
-    image: "/certificates/google_ecommerce_marketing_analytics.jpg",
-    credentialId: "5GFRRC30CCXE",
-    verifyUrl: "https://coursera.org/verify/5GFRRC30CCXE",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
-    },
-  },
-  {
-    id: "google-ecommerce-customer-loyalty",
-    title: "Satisfaction Guaranteed: Develop Customer Loyalty Online",
-    issuer: "Google · Coursera",
-    date: "Dec 31, 2025",
-    badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
-    description:
-      "Official Course Certificate authorized by Google and offered through Coursera, mastering customer relationship management (CRM) strategies, post-purchase experience, retention programs, and client lifecycle management.",
-    skills: [
-      "Customer Loyalty",
-      "CRM Strategy",
-      "Client Retention",
-      "User Experience",
-      "Customer Lifetime Value",
-      "Google E-commerce",
-    ],
-    image: "/certificates/google_ecommerce_customer_loyalty.jpg",
-    credentialId: "TYQ15Y5Q2929",
-    verifyUrl: "https://coursera.org/verify/TYQ15Y5Q2929",
-    cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF7F3 0%, #F4EBE3 100%)",
+      border: "rgba(173, 88, 52, 0.28)",
+      accent: "#AD5834",
+      badgeBg: "rgba(173, 88, 52, 0.12)",
     },
   },
   {
@@ -438,7 +356,7 @@ export const certificatesData: CertificateItem[] = [
     issuer: "Google · Coursera",
     date: "Dec 31, 2025",
     badge: "Google Certified · Course Certificate",
-    badgeType: "clay",
+    badgeType: "gold",
     description:
       "Official Course Certificate authorized by Google and offered through Coursera, establishing foundational mastery in digital marketing strategies, customer journey mapping, marketing funnels, and core e-commerce principles.",
     skills: [
@@ -453,9 +371,37 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "80T5198L2ENL",
     verifyUrl: "https://coursera.org/verify/80T5198L2ENL",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF8F4 0%, #F4EDE1 100%)",
+      border: "rgba(140, 113, 71, 0.28)",
+      accent: "#8C7147",
+      badgeBg: "rgba(140, 113, 71, 0.12)",
+    },
+  },
+  {
+    id: "google-ecommerce-attract-engage",
+    title: "Attract and Engage Customers with Digital Marketing",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Certified · Course Certificate",
+    badgeType: "gold",
+    description:
+      "Official Course Certificate authorized by Google and offered through Coursera, focusing on search engine optimization (SEO), search engine marketing (SEM), paid display advertising, and omnichannel acquisition funnels.",
+    skills: [
+      "Customer Acquisition",
+      "SEO & SEM",
+      "Display Advertising",
+      "Search Marketing",
+      "Audience Targeting",
+      "Campaign Optimization",
+    ],
+    image: "/certificates/google_ecommerce_attract_engage.jpg",
+    credentialId: "0QEIF0T1BKY2",
+    verifyUrl: "https://coursera.org/verify/0QEIF0T1BKY2",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #FAF8F3 0%, #F5EEE1 100%)",
+      border: "rgba(158, 128, 56, 0.28)",
+      accent: "#9E8038",
+      badgeBg: "rgba(158, 128, 56, 0.12)",
     },
   },
   {
@@ -479,9 +425,118 @@ export const certificatesData: CertificateItem[] = [
     credentialId: "4QSEPED77RGK",
     verifyUrl: "https://coursera.org/verify/4QSEPED77RGK",
     cardTheme: {
-      bg: "linear-gradient(135deg, #FAF8F5 0%, #F4ECE1 100%)",
-      border: "rgba(184, 90, 58, 0.28)",
-      accent: "#B85A3A",
+      bg: "linear-gradient(135deg, #FAF6F4 0%, #F5EAE4 100%)",
+      border: "rgba(168, 78, 46, 0.28)",
+      accent: "#A84E2E",
+      badgeBg: "rgba(168, 78, 46, 0.12)",
+    },
+  },
+  {
+    id: "google-ecommerce-email-marketing",
+    title: "Think Outside the Inbox: Email Marketing",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Certified · Course Certificate",
+    badgeType: "clay",
+    description:
+      "Official Course Certificate authorized by Google and offered through Coursera, validating expertise in designing high-converting email marketing campaigns, list segmentation, automation workflows, and A/B testing.",
+    skills: [
+      "Email Marketing",
+      "Marketing Automation",
+      "List Segmentation",
+      "Campaign Strategy",
+      "A/B Testing",
+      "Customer Retention",
+    ],
+    image: "/certificates/google_ecommerce_email_marketing.jpg",
+    credentialId: "0WKU3HV04AK5",
+    verifyUrl: "https://coursera.org/verify/0WKU3HV04AK5",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #F9F7F5 0%, #F2EBE5 100%)",
+      border: "rgba(102, 91, 77, 0.28)",
+      accent: "#665B4D",
+      badgeBg: "rgba(102, 91, 77, 0.12)",
+    },
+  },
+  {
+    id: "google-ecommerce-marketing-analytics",
+    title: "Assess for Success: Marketing Analytics and Measurement",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Certified · Course Certificate",
+    badgeType: "moss",
+    description:
+      "Official Course Certificate authorized by Google and offered through Coursera, covering marketing analytics, KPI tracking, Google Analytics 4, return on ad spend (ROAS) optimization, and data-driven insights.",
+    skills: [
+      "Marketing Analytics",
+      "Google Analytics 4",
+      "KPI Tracking",
+      "ROAS Optimization",
+      "Data Modeling",
+      "Performance Reporting",
+    ],
+    image: "/certificates/google_ecommerce_marketing_analytics.jpg",
+    credentialId: "5GFRRC30CCXE",
+    verifyUrl: "https://coursera.org/verify/5GFRRC30CCXE",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #F6F8F5 0%, #EBF1EA 100%)",
+      border: "rgba(69, 94, 76, 0.28)",
+      accent: "#455E4C",
+      badgeBg: "rgba(69, 94, 76, 0.12)",
+    },
+  },
+  {
+    id: "google-ecommerce-make-the-sale",
+    title: "Make the Sale: Build, Launch, and Manage E-commerce Stores",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Certified · Course Certificate",
+    badgeType: "clay",
+    description:
+      "Official Course Certificate authorized by Google and offered through Coursera, demonstrating competencies in building, launching, and managing online stores using Shopify, optimizing checkout funnels, and managing inventory.",
+    skills: [
+      "E-Commerce Stores",
+      "Shopify Management",
+      "Store Architecture",
+      "Checkout Optimization",
+      "Inventory Management",
+      "Google Digital",
+    ],
+    image: "/certificates/google_ecommerce_make_the_sale.jpg",
+    credentialId: "M4GJKAX97Y7F",
+    verifyUrl: "https://coursera.org/verify/M4GJKAX97Y7F",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #FAF7F3 0%, #F4ECE3 100%)",
+      border: "rgba(165, 99, 51, 0.28)",
+      accent: "#A56333",
+      badgeBg: "rgba(165, 99, 51, 0.12)",
+    },
+  },
+  {
+    id: "google-ecommerce-customer-loyalty",
+    title: "Satisfaction Guaranteed: Develop Customer Loyalty Online",
+    issuer: "Google · Coursera",
+    date: "Dec 31, 2025",
+    badge: "Google Certified · Course Certificate",
+    badgeType: "clay",
+    description:
+      "Official Course Certificate authorized by Google and offered through Coursera, mastering customer relationship management (CRM) strategies, post-purchase experience, retention programs, and client lifecycle management.",
+    skills: [
+      "Customer Loyalty",
+      "CRM Strategy",
+      "Client Retention",
+      "User Experience",
+      "Customer Lifetime Value",
+      "Google E-commerce",
+    ],
+    image: "/certificates/google_ecommerce_customer_loyalty.jpg",
+    credentialId: "TYQ15Y5Q2929",
+    verifyUrl: "https://coursera.org/verify/TYQ15Y5Q2929",
+    cardTheme: {
+      bg: "linear-gradient(135deg, #FAF8F4 0%, #F3EDE4 100%)",
+      border: "rgba(117, 92, 65, 0.28)",
+      accent: "#755C41",
+      badgeBg: "rgba(117, 92, 65, 0.12)",
     },
   },
 ];
