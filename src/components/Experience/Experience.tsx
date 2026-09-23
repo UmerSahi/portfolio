@@ -84,7 +84,7 @@ export const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" style={{ padding: "100px 0", position: "relative" }}>
+    <section id="experience" style={{ padding: "clamp(60px, 10vh, 100px) 0", position: "relative" }}>
       {/* Subtle backdrop overlay */}
       <div
         style={{
@@ -98,11 +98,15 @@ export const Experience: React.FC = () => {
         }}
       />
 
-      <div style={{ position: "relative", zIndex: 10, maxWidth: 1080, margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ position: "relative", zIndex: 10, maxWidth: 1080, margin: "0 auto", padding: "0 clamp(14px, 3.5vw, 32px)" }}>
         <SectionHead index="02" title="Career" em="road" />
 
         {/* Filter Navigation Tabs */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -151,11 +155,15 @@ export const Experience: React.FC = () => {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
         <div style={{ position: "relative", paddingBottom: 40 }}>
           {/* Asphalt Road Track with Yellow Dashed Centerline */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scaleY: 0.6 }}
+            whileInView={{ opacity: 1, scaleY: 1 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="kk-road-track"
             style={{
               position: "absolute",
@@ -165,6 +173,7 @@ export const Experience: React.FC = () => {
               width: 24,
               background: "#32372A",
               transform: "translateX(-50%)",
+              transformOrigin: "top",
               borderRadius: 12,
               border: `2px solid ${c.lineStrong}`,
               boxShadow: "inset 0 0 10px rgba(0,0,0,0.5)",
@@ -181,7 +190,7 @@ export const Experience: React.FC = () => {
                 opacity: 0.95,
               }}
             />
-          </div>
+          </motion.div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 56, position: "relative" }}>
             {filteredMilestones.map((item, idx) => {
@@ -210,7 +219,11 @@ export const Experience: React.FC = () => {
                       paddingTop: 20,
                     }}
                   >
-                    <div
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ type: "spring", stiffness: 240, damping: 18, delay: 0.04 }}
                       className="kk-milestone-dot"
                       style={{
                         width: 48,
@@ -227,9 +240,13 @@ export const Experience: React.FC = () => {
                       }}
                     >
                       {theme.icon}
-                    </div>
+                    </motion.div>
 
-                    <div
+                    <motion.div
+                      initial={{ opacity: 0, y: 14 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                       className="kk-milestone-date"
                       style={{
                         textAlign: "center",
@@ -260,7 +277,7 @@ export const Experience: React.FC = () => {
                       <div style={{ ...serif, fontSize: 14, color: c.ink, fontWeight: 600 }}>
                         {item.period}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Right Column: Milestone Content Card */}
@@ -775,10 +792,11 @@ export const Experience: React.FC = () => {
       <style>{`
         @media (max-width: 800px) {
           .kk-road-track {
-            left: 40px !important;
+            left: 36px !important;
+            width: 20px !important;
           }
           .kk-milestone-row {
-            grid-template-columns: 80px 1fr !important;
+            grid-template-columns: 72px 1fr !important;
             gap: 16px !important;
           }
           .kk-milestone-left {
@@ -794,18 +812,45 @@ export const Experience: React.FC = () => {
             height: 16px !important;
           }
           .kk-milestone-date {
-            margin-top: 16px !important;
-            padding: 6px 10px !important;
-            min-width: 70px !important;
+            margin-top: 12px !important;
+            padding: 5px 8px !important;
+            min-width: 64px !important;
           }
           .kk-milestone-date > div:first-child {
-            font-size: 8.5px !important;
+            font-size: 8px !important;
           }
           .kk-milestone-date > div:last-child {
-            font-size: 12px !important;
+            font-size: 11px !important;
           }
           .kk-milestone-card-container {
             width: 100% !important;
+          }
+        }
+
+        @media (max-width: 580px) {
+          .kk-road-track {
+            left: 18px !important;
+            width: 14px !important;
+          }
+          .kk-milestone-row {
+            grid-template-columns: 36px 1fr !important;
+            gap: 12px !important;
+          }
+          .kk-milestone-dot {
+            width: 30px !important;
+            height: 30px !important;
+            box-shadow: 0 0 0 4px #FAF7F0 !important;
+          }
+          .kk-milestone-dot svg {
+            width: 14px !important;
+            height: 14px !important;
+          }
+          .kk-milestone-date {
+            display: none !important;
+          }
+          .kk-milestone-card-container > div > div {
+            padding: 18px 16px !important;
+            border-radius: 12px !important;
           }
         }
       `}</style>

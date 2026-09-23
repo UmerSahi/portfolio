@@ -6,26 +6,26 @@ import { Reveal } from "../common/Reveal";
 
 export const About: React.FC = () => {
   return (
-    <section id="about" style={{ padding: "100px 0" }}>
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 32px" }}>
+    <section id="about" style={{ padding: "clamp(60px, 10vh, 100px) 0" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 clamp(16px, 4vw, 32px)" }}>
         <SectionHead index="01" title="About" em="me" />
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1.2fr 1fr",
-            gap: 64,
+            gap: "clamp(32px, 5vw, 64px)",
             position: "relative",
             zIndex: 10,
           }}
           className="kk-grid-collapse"
         >
           {/* Left Column Story */}
-          <Reveal style={{ display: "flex", flexDirection: "column", gap: 32, justifyContent: "center" }}>
+          <Reveal style={{ display: "flex", flexDirection: "column", gap: "clamp(18px, 3vw, 32px)", justifyContent: "center" }}>
             <p
               style={{
                 margin: 0,
-                fontSize: 24,
+                fontSize: "clamp(19px, 3vw, 24px)",
                 lineHeight: 1.5,
                 color: c.ink,
                 fontWeight: 500,
@@ -38,18 +38,19 @@ export const About: React.FC = () => {
               </span>{" "}
               specializing in computer vision, generative AI, and full-stack systems.
             </p>
-            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.7, color: c.inkSoft }}>
+            <p style={{ margin: 0, fontSize: "clamp(15px, 2vw, 17px)", lineHeight: 1.7, color: c.inkSoft }}>
               My work spans from training deep convolutional networks for medical image analysis to orchestrating RAG-based multi-agent intelligence systems. I focus on developing explainable, production-ready AI pipelines that solve real-world problems.
             </p>
-            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.7, color: c.inkSoft }}>
+            <p style={{ margin: 0, fontSize: "clamp(15px, 2vw, 17px)", lineHeight: 1.7, color: c.inkSoft }}>
               Graduated <strong>1st in my cohort</strong> at Khwaja Fareed UEIT and awarded <strong>Top Performer (97.20%)</strong> at the National HEC Generative AI Training Hackathon.
             </p>
           </Reveal>
 
           {/* Right Column Cards */}
-          <Reveal delay={0.1} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, alignContent: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, alignContent: "center" }}>
             {/* Top Span Card: Academic & Hackathon Honors */}
-            <div
+            <Reveal
+              delay={0.1}
               style={{
                 gridColumn: "1 / -1",
                 background: "rgba(255,255,255,0.4)",
@@ -57,7 +58,7 @@ export const About: React.FC = () => {
                 WebkitBackdropFilter: "blur(12px)",
                 border: `1px solid ${c.line}`,
                 borderRadius: 24,
-                padding: 32,
+                padding: "clamp(20px, 4vw, 32px)",
                 position: "relative",
                 overflow: "hidden",
               }}
@@ -78,7 +79,7 @@ export const About: React.FC = () => {
                 <h4
                   style={{
                     ...serif,
-                    fontSize: 44,
+                    fontSize: "clamp(28px, 6vw, 44px)",
                     fontWeight: 600,
                     color: c.ink,
                     margin: "8px 0 4px 0",
@@ -97,7 +98,7 @@ export const About: React.FC = () => {
                     marginTop: 4,
                   }}
                 >
-                  <p style={{ color: c.inkSoft, fontSize: 14, margin: 0, maxWidth: 240 }}>
+                  <p style={{ color: c.inkSoft, fontSize: 13.5, margin: 0, maxWidth: 240, lineHeight: 1.5 }}>
                     Ranked 1st in Cohort & 97.2% HEC Hackathon Top Performer.
                   </p>
                   <a
@@ -146,17 +147,18 @@ export const About: React.FC = () => {
               >
                 AI
               </div>
-            </div>
+            </Reveal>
 
             {/* Bottom Card 1: Education */}
-            <div
+            <Reveal
+              delay={0.18}
               style={{
                 background: "rgba(255,255,255,0.4)",
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
                 border: `1px solid ${c.line}`,
-                borderRadius: 24,
-                padding: 24,
+                borderRadius: 20,
+                padding: "clamp(16px, 3vw, 24px)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -191,10 +193,11 @@ export const About: React.FC = () => {
                   Gold Medalist · Rank 1
                 </p>
               </div>
-            </div>
+            </Reveal>
 
             {/* Bottom Card 2: Experience */}
-            <div
+            <Reveal
+              delay={0.26}
               style={{
                 background: "rgba(255,255,255,0.4)",
                 backdropFilter: "blur(12px)",
@@ -236,8 +239,8 @@ export const About: React.FC = () => {
                   The Journal Post (Web Dev)
                 </p>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

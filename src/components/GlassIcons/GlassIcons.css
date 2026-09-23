@@ -106,10 +106,21 @@
 
 @media (max-width: 600px) {
   .icon-btns {
-    gap: 2.25em;
+    gap: 2em;
   }
   .icon-btn {
     width: 3.8em;
     height: 3.8em;
+  }
+}
+
+@media (max-width: 420px) {
+  .icon-btns {
+    gap: 1.4em;
+  }
+  .icon-btn {
+    width: 3.3em;
+    height: 3.3em;
+    font-size: 13px;
   }
 }

@@ -179,33 +179,41 @@ export const Playground: React.FC<PlaygroundProps> = ({
   };
 
   return (
-    <section id="playground" style={{ padding: "100px 0", position: "relative" }}>
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 32px" }}>
+    <section id="playground" style={{ padding: "clamp(60px, 10vh, 100px) 0", position: "relative" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 clamp(14px, 3.5vw, 32px)" }}>
         <SectionHead index="05" title="Play" em="ground" />
 
-        <p
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{
             ...mono,
-            fontSize: 13,
+            fontSize: "clamp(11px, 2vw, 13px)",
             color: c.clay,
             textAlign: "center",
-            marginBottom: 60,
+            marginBottom: "clamp(30px, 6vh, 60px)",
             letterSpacing: 1.5,
           }}
         >
           SORT THE SKILLS INTO THEIR CORRECT ARCHITECTURE CATEGORIES
-        </p>
+        </motion.p>
 
-        <div
+        <motion.div
           ref={containerRef}
+          initial={{ opacity: 0, y: 32, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.12 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           onMouseEnter={() => {
             if (!isPoolVisible) setIsPoolVisible(true);
           }}
           style={{
             background: c.paper,
             border: `1px solid ${c.line}`,
-            borderRadius: 32,
-            padding: "40px 24px",
+            borderRadius: 24,
+            padding: "clamp(24px, 4vw, 40px) clamp(14px, 3vw, 24px)",
             position: "relative",
             boxShadow: "inset 0 4px 20px rgba(0,0,0,0.02), 0 20px 40px rgba(0,0,0,0.05)",
             overflow: "hidden",
@@ -614,7 +622,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
                 })}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

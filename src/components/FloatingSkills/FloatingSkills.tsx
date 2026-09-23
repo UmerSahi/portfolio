@@ -166,7 +166,18 @@ export const FloatingSkills: React.FC<FloatingSkillsProps> = ({ isDocked, isHidd
     };
   }, [mouseX, mouseY]);
 
-  if (isHidden) return null;
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobileScreen(window.innerWidth < 768);
+    };
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  if (isHidden || isMobileScreen) return null;
 
   return (
     <div

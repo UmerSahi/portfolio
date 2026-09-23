@@ -41,8 +41,8 @@ const tagVariants = {
 
 export const Skills: React.FC = () => {
   return (
-    <section id="skills" style={{ padding: "100px 0", background: c.bgDeep, position: "relative" }}>
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 32px" }}>
+    <section id="skills" style={{ padding: "clamp(60px, 10vh, 100px) 0", background: c.bgDeep, position: "relative" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 clamp(16px, 4vw, 32px)" }}>
         <SectionHead index="04" title="Technical" em="skills" />
 
         <motion.div
@@ -53,11 +53,11 @@ export const Skills: React.FC = () => {
           viewport={{ once: true, amount: 0.15 }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 28,
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "clamp(16px, 3vw, 28px)",
             marginTop: 40,
           }}
-          className="kk-grid-3"
+          className="kk-grid-skills"
         >
           {skillGroups.map((group) => (
             <motion.div
@@ -73,7 +73,7 @@ export const Skills: React.FC = () => {
                 background: c.paper,
                 border: `1px solid ${c.line}`,
                 borderRadius: 16,
-                padding: 24,
+                padding: "clamp(16px, 3vw, 24px)",
                 boxShadow: "0 4px 12px rgba(42,39,30,0.02)",
                 cursor: "default",
               }}
@@ -99,8 +99,8 @@ export const Skills: React.FC = () => {
                 variants={tagContainerVariants}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: 12,
+                  gridTemplateColumns: "repeat(auto-fill, minmax(74px, 1fr))",
+                  gap: "clamp(8px, 1.5vw, 12px)",
                   marginTop: 16,
                 }}
               >
