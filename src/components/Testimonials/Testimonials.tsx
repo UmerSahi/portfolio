@@ -29,7 +29,7 @@ export const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="peer-reviews" style={{ padding: "100px 0", position: "relative" }}>
+    <section id="peer-reviews" style={{ padding: "clamp(60px, 10vh, 100px) 0", position: "relative" }}>
       {/* Translucent Frosted Glass Background Layer */}
       <div
         style={{
@@ -49,21 +49,25 @@ export const Testimonials: React.FC = () => {
           zIndex: 5,
           maxWidth: 1080,
           margin: "0 auto",
-          padding: "0 32px",
+          padding: "0 clamp(14px, 3.5vw, 32px)",
           width: "100%",
         }}
       >
         <SectionHead index="07" title="Featured" em="testimonials" />
 
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          className="mx-auto max-w-sm px-4 py-8 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12 select-none"
+          className="mx-auto max-w-sm px-0 sm:px-4 py-4 sm:py-8 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12 select-none"
         >
-          <div className="relative grid grid-cols-1 gap-12 md:gap-20 md:grid-cols-2">
+          <div className="relative grid grid-cols-1 gap-8 md:gap-16 md:grid-cols-2">
             {/* 3D Stacked Avatar Column */}
             <div className="flex flex-col">
-              <div className="relative h-84 w-full" style={{ minHeight: "340px" }}>
+              <div className="relative h-72 sm:h-84 w-full" style={{ minHeight: "clamp(260px, 45vw, 340px)" }}>
                 <AnimatePresence>
                   {testimonials.map((testimonial, index) => {
                     const rot = randomRotateY(index);
@@ -118,16 +122,19 @@ export const Testimonials: React.FC = () => {
               </div>
 
               {/* Avatar Selector Strip */}
-              <div className="flex items-center justify-center md:justify-start gap-2.5 mt-6 pt-2">
+              <div
+                className="flex items-center justify-center md:justify-start gap-3 mt-6 px-3 py-2.5 overflow-x-auto md:overflow-visible max-w-full"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
                 {testimonials.map((item, idx) => {
                   const isSelected = idx === active;
                   return (
                     <button
                       key={item.name}
                       onClick={() => setActive(idx)}
-                      className={`relative rounded-full transition-all duration-300 cursor-pointer p-0.5 ${
-                        isSelected 
-                          ? "ring-2 ring-[#566047] scale-110 shadow-md" 
+                      className={`relative rounded-full transition-all duration-300 cursor-pointer p-0.5 shrink-0 ${
+                        isSelected
+                          ? "ring-2 ring-[#566047] scale-110 shadow-md"
                           : "opacity-60 hover:opacity-100 hover:scale-105"
                       }`}
                       aria-label={`View testimonial from ${item.name}`}
@@ -158,7 +165,7 @@ export const Testimonials: React.FC = () => {
                     Endorsement {active + 1} of {testimonials.length}
                   </div>
 
-                  <h3 style={{ ...serif, color: c.ink }} className="text-2xl md:text-3xl font-bold">
+                  <h3 style={{ ...serif, color: c.ink }} className="text-xl sm:text-2xl md:text-3xl font-bold">
                     {testimonials[active].name}
                   </h3>
                   <p style={{ ...mono, color: c.inkSoft }} className="text-xs uppercase tracking-wider mt-1.5">
@@ -166,7 +173,7 @@ export const Testimonials: React.FC = () => {
                   </p>
                   <p
                     style={{ ...serif, color: c.inkSoft, fontStyle: "italic", lineHeight: 1.65 }}
-                    className="mt-6 text-lg md:text-xl"
+                    className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl"
                   >
                     "{testimonials[active].quote}"
                   </p>
@@ -197,7 +204,7 @@ export const Testimonials: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
