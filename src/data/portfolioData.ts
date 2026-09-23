@@ -507,8 +507,6 @@ export const experienceMilestones: ExperienceMilestone[] = [
       "Recipient of the Prime Minister's Youth Laptop Scheme (2023) and Benazir Undergraduate Scholarship (BUSP, 2022)",
     ],
     tags: ["Computer Vision", "Deep Learning", "Transfer Learning", "Algorithms", "Database Systems", "CNN", "XAI"],
-    certificateType: "gold_medal",
-    certificateTitle: "Gold Medal Certificate",
   },
   {
     id: "pgc-hssc",
